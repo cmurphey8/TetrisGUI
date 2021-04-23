@@ -1,6 +1,6 @@
 /**************************************************************************************************
  *
- *  Class to draw the background @ each frame -> Nothing to do here!
+ *  Controller Class for this program >> replaces StdDraw -> Nothing to do here! 
  *  
  **************************************************************************************************/
 import java.awt.*;

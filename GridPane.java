@@ -1,3 +1,10 @@
+/**************************************************************************************************
+ *
+ *  JPanel extension Class with a GridBagLayout to house (gridY x gridX) Cell objects
+ *  NOTE: Cells represent the bakcground (black) and tetroid (color[row][col]) blocks!
+ * 
+ **************************************************************************************************/
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -17,7 +24,7 @@ public class GridPane extends JPanel {
             for (int col = 0; col < gridX; col++) {
                 gbc.gridx = col;
                 gbc.gridy = row;
-                Color pass = (color[row][col] == null)? Color.black : color[row][col];
+                Color pass = (color[row][col] == null)? Color.BLACK : color[row][col];
                 add(new Cell(pass), gbc);
             }
         }

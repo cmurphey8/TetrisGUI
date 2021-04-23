@@ -1,6 +1,6 @@
 /**********************************************************************************
  *
- *  This block is complete: a good reference for other blocks!
+ *  All blocks are complete - notice we do not draw() anymore!
  *              
  **********************************************************************************/
 import java.awt.Color;
