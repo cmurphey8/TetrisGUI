@@ -26,7 +26,7 @@ public class TetraSet {
     //  MUTATORS
     //*******************************************************************/
 
-    public void update(Shape Tetroid) {
+    public int update(Shape Tetroid) {
         // gather Tetroid data
         double[] xT = Tetroid.getX();
         double[] yT = Tetroid.getY();
@@ -38,24 +38,31 @@ public class TetraSet {
         }
 
         // reduce if blocks span the grid
-        reduce();
+        return reduce();
     }
 
-    private void reduce() {
+    private int reduce() {
         // eliminate all blocks in a row if the row is full
+        int lines = 0;
         for (int i = 0; i < gridY - 1; i++) {
             if (fullRow(i)) {
+                lines++;
                 for (int j = i; j < gridY - 1; j++)
                     for (int k = 0; k < gridX; k++)
                         superC[j][k] = superC[j + 1][k];
-                reduce();
-                return;
+                lines += reduce();
+                return lines;
             }
         }  
 
-        if (fullRow(gridY - 1))
+        if (fullRow(gridY - 1)) {
             for (int k = 0; k < gridX; k++)
-                superC[gridY - 1][k] = null;                                  
+                superC[gridY - 1][k] = null; 
+            lines++;    
+        }
+        return lines;
+
+                                             
     } 
     
     private boolean fullRow(int i) {
@@ -64,4 +71,12 @@ public class TetraSet {
                 return false;
         return true;
     }    
+
+    public boolean gameOver(){
+        for (int i = 0; i < gridX; i++)
+            if (superC[gridY - 1][i] != null)
+                return true;
+
+        return false;
+    }
 }

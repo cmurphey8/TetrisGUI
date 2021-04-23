@@ -10,7 +10,7 @@ public class TetroidI extends Shape {
     private double[] y;         // y position for blocks
     private int rotation;       // 2 phases total
     private static final int phases = 2;
-    private static final Color C = Color.CYAN;     // this tetroid color
+    private static final Color C = new Color(0, 255, 248);     // this tetroid color
 
     //******************************************************************
     //  CONSTRUCTORS
@@ -29,18 +29,20 @@ public class TetroidI extends Shape {
 
     public void hover(double x, double y) {
         if (rotation == 0) {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 3; i++) {
                 this.x[i] = x + i;
                 this.y[i] = y;                    
             }
-            // swap(0, 1);
+            this.x[3] = x - 1;
+            this.y[3] = y;   
         }
         else {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 3; i++) {
                 this.x[i] = x;
                 this.y[i] = y + i;    
             }
-            // swap(0,1);
+            this.x[3] = x;
+            this.y[3] = y - 1;   
         }
     }
 

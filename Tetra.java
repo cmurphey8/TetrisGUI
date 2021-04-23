@@ -43,6 +43,8 @@ public class Tetra {
     public static int nextBlock;
     public static Shape nextTetroid;
 
+    public static long score;
+
     public static void main(String[] args) {   
         boolean inPlay = false;
         nextBlock = -1;
@@ -50,7 +52,7 @@ public class Tetra {
 
         frameView = new View(nextTetroid);
         long time0 = System.currentTimeMillis();
-        while (true) {
+        while (!blob.gameOver()) {
             long timeDelta = System.currentTimeMillis() - time0;
             // select a new block if last block no longer in play
             if (!inPlay) {
@@ -81,7 +83,7 @@ public class Tetra {
             // if block IN play: drop on-time; remove from play if floored
             if (inPlay) {
                 // reload frame with Tetroid updates
-                frameView.nextFrame(nextTetroid, tetroid);
+                frameView.nextFrame(nextTetroid, tetroid, score);
                 if (timeDelta > 500) {
                     if (!tetroid.drop()) {
                         inPlay = unselect();
@@ -100,7 +102,8 @@ public class Tetra {
 
     // remove block from play if floored
     public static boolean unselect() {
-        blob.update(tetroid);
+        int lines = blob.update(tetroid);
+        score += 40 * Math.pow(3, lines);
         tetroid = null;
         return false;
     }
@@ -111,15 +114,32 @@ public class Tetra {
         if (k >= 0) {
             initNew(k, gridX / 2, gridY - 2);
         }
-        initNext(nextBlock(), 1, -1);
+        initNext(nextBlock(), 2, 1);
         return true;
     }
 
-    // select the next block to play
+    // select the next block to play (per NES sequence)
     public static int nextBlock() {
-        nextBlock = (nextBlock + 1) % 7;
+        // select a random block [0,7)
+        int nextRandom = uniform(7);
+        
+        // if random block is the same as the last, try again
+        if (nextBlock == nextRandom) {
+            nextBlock = uniform(7);
+
+            // regardless of outcome, go with it
+            return nextBlock;
+        }
+
+        // else go with it
+        nextBlock = nextRandom;
         return nextBlock;
     }
+
+    // uniform random integer in [0, n) 
+    public static int uniform(int n) {
+        return (int) (Math.random() * n);
+    } 
 
     public static void initNext(int k, double x, double y) {
         // add a new block to the tetroids array by the template type identified
@@ -128,16 +148,18 @@ public class Tetra {
                 nextTetroid = new TetroidI(x, y);
                 break;
             case 1: 
+                x--;
                 nextTetroid = new TetroidJ(x, y);
                 break;
             case 2: 
+                x++;
                 nextTetroid = new TetroidL(x, y);
                 break;
             case 3: 
-                x++;
                 nextTetroid = new TetroidO(x, y);
                 break;
             case 4: 
+                y++;
                 nextTetroid = new TetroidS(x, y);
                 break;
             case 5: 

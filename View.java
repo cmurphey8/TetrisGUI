@@ -42,10 +42,10 @@ public class View extends TetraSet implements KeyListener {
             for (int j = 0; j < gridX; j++)
                 frameC[i][j] = superC[gridY - 1 - i][j];
 
-        playLayout(next);
+        playLayout(next, 0);
     }
 
-    public void nextFrame(Shape next, Shape tetroid) {
+    public void nextFrame(Shape next, Shape tetroid, long score) {
         double[] x = tetroid.getX();
         double[] y = tetroid.getY();
         for (int i = 0; i < gridY; i++)
@@ -56,10 +56,10 @@ public class View extends TetraSet implements KeyListener {
         for (int i = 0; i < 4; i++)
             frameC[gridY - 1 - (int) y[i]][(int) x[i]] = tetroid.getC();
     
-        playLayout(next);
+        playLayout(next, score);
     }
     
-    public void playLayout(Shape next) {
+    public void playLayout(Shape next, long score) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.setMinimumSize(dim);
@@ -73,7 +73,7 @@ public class View extends TetraSet implements KeyListener {
         frame.add(panel, BorderLayout.CENTER);
         
         // fill LINE_END component of BorderLayout() >> (fixed)
-        SidePane sidePane = new SidePane(next, gridX, gridY);
+        SidePane sidePane = new SidePane(next, score);
         frame.add(sidePane, BorderLayout.LINE_END);
         frame.revalidate();
     }

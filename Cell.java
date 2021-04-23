@@ -30,7 +30,7 @@ public class Cell extends JButton {
     private void doDrawing(Graphics g) {       
 
         // dull colors from standard - inner light
-        Color inner = Color.getHSBColor( hsbVals[0], hsbVals[1], 0.95f * hsbVals[2] ); 
+        Color inner = Color.getHSBColor( hsbVals[0], hsbVals[1], hsbVals[2] ); //0.95f * hsbVals[2] ); 
 
         int x = 0;
         int y = 0;

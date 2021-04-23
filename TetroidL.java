@@ -10,7 +10,7 @@ public class TetroidL extends Shape {
     private double[] y;         // y position for blocks
     private int rotation;       // 4 phases total
     private static final int phases = 4;
-    private static final Color C = Color.ORANGE;   // this tetroid color
+    private static final Color C = new Color(255, 155, 3); //new Color(255, 136, 77);   // this tetroid color
 
     //******************************************************************
     //  CONSTRUCTORS
@@ -31,35 +31,35 @@ public class TetroidL extends Shape {
         switch (rotation) {
             case 0:
                 for (int i = 0; i < 3; i++) {
-                    this.x[i] = x + i;
+                    this.x[i] = x - i;
                     this.y[i] = y;    
                 }
-                this.x[3] = x + 2;
+                this.x[3] = x;
                 this.y[3] = y + 1;
                 break;
             case 1:
                 for (int i = 0; i < 3; i++) {
                     this.x[i] = x;
-                    this.y[i] = y - i;    
+                    this.y[i] = y + i;    
                 }
                 this.x[3] = x + 1;
-                this.y[3] = y - 2;
+                this.y[3] = y;
                 break;
             case 2: 
                 for (int i = 0; i < 3; i++) {
-                    this.x[i] = x - i;
+                    this.x[i] = x + i;
                     this.y[i] = y;    
                 }
-                this.x[3] = x - 2;
+                this.x[3] = x;
                 this.y[3] = y - 1;
                 break;
             case 3:
                 for (int i = 0; i < 3; i++) {
                     this.x[i] = x;
-                    this.y[i] = y + i;    
+                    this.y[i] = y - i;    
                 }
                 this.x[3] = x - 1;
-                this.y[3] = y + 2;
+                this.y[3] = y;
                 break;
         }
     }
