@@ -3,7 +3,7 @@
  *  Class to draw the sidePane that houses the next block and the score
  *  
  *  TODO: 
- *  (1) choose a Layout Manager to nest (add) here in SidePane
+ *  (1) choose a Layout Manager to nest (add) in SidePane
  *  (2) choose GUI element to house text “SCORE:”
  *  (3) choose GUI element to display score
  * 
