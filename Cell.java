@@ -36,7 +36,7 @@ public class Cell extends JButton {
 
     private void doDrawing(Graphics g) {       
 
-        // option dull colors from standard - inner light >> no dimming at the moment!
+        // option: dull colors from standard - inner light >> no dimming at the moment!
         Color inner = Color.getHSBColor( hsbVals[0], hsbVals[1], hsbVals[2] ); //0.95f * hsbVals[2] ); 
 
         int x = 0;
