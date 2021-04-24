@@ -79,7 +79,7 @@ public class View extends TetraSet implements KeyListener {
     }
 
     /***************************************************************************
-    *  Keyboard interactions.
+    *  Keyboard interactions >> ripped from StdDraw
     ***************************************************************************/
 
     /**
