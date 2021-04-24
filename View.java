@@ -68,7 +68,7 @@ public class View extends TetraSet implements KeyListener {
         frame.setTitle("Tetris");
         frame.setLayout(new BorderLayout());
          
-        // fill CENTER component of BorderLayout() with gridY x gridX cells >> (expands)
+       // fill CENTER >> (expands) >> component of BorderLayout() with gridY x gridX cells 
         GridPane panel = new GridPane(frameC, gridX, gridY);
         frame.add(panel, BorderLayout.CENTER);
         
