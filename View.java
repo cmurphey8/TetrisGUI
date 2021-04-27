@@ -157,5 +157,5 @@ public class View extends TetraSet {
                 keysDown.remove(e.getKeyCode());
             }
         }
-	} // end of private class
+    } // end of private class
 } 
