@@ -9,20 +9,25 @@
  * 
  *  Discussion: 
  * 
- *  (1) What is the significance of the TetraSet class elements being declared protected and static?
+ *  (1) The outer layout of our SidePane class is a BoxLayout. 
+ *          What feature of BoxLayouts makes this a good design choice over a FlowLayout?
  * 
- *  (2) What do we gain from having our Shape and Display classes extend TetraSet? 
+ *  (2) What made our choice of inner layout in SidePane, the layout we assigned to 
+ *          our new ScorePanel, a good choice?
  * 
- *  (3) Making only this one change, could we set the global tetroid object in Tetra to type TetraSet? 
- *          -> Why or why not? 
- *
- *  (4) Making only this one change, could we set the global templates array in Display to type TetraSet? 
- *          -> Why or why not?
+ *  (3) Our cells are clearly getting "painted" in our App, but we never actually call the method
+ *      paintComponent in the Cell class. How can this be?
  * 
- *  (5) Suppose we were determined to change Shape from abstract to interface, 
- *      but we did not want to add any more methods to our Tetroids. How could we accomplish this?
+ *  (4) What type of listener do we have in our View class? 
+ *          e.g., standard class, inner class, inner anonymous class? 
  * 
- *  EXTRA PRACTICE: Find a suitable end-game procedure to break out of the while(true) loop below!
+ *  (5) Notice that both View and SidePane call the GridPane class. 
+ *          How do these 2 calls to the same panel class yield such different results?
+ * 
+ *  (6) Our View class is in direct communication with our Tetra class game engine to pass key inputs from the user.
+ *          Why are some of our keyboard functions in the Listener class while others are in View?
+ * 
+ *  EXTRA PRACTICE: Add a High Scores Page to this program. We'll work through this in Super Section on Friday!
  * 
  **************************************************************************************************/
 

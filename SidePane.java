@@ -30,8 +30,7 @@ public class SidePane extends JPanel {
         for (int j = 0; j < 4; j++) {
             nextC[3 - (int) y[j]][(int) x[j]] = next.getC();
         }
-        GridPane panel = new GridPane(nextC, 6, 4);
-        add(panel, BorderLayout.CENTER);
+        add(new GridPane(nextC, 6, 4));
 
         /* TODO: 
             (1) choose a Layout Manager to nest (add) here in SidePane
